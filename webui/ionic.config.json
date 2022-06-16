@@ -1,0 +1,7 @@
+{
+  "name": "webui",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
