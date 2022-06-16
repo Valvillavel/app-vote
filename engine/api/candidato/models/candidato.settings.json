@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "candidatoes",
+  "info": {
+    "name": "candidato"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "propuesta": {
+      "type": "richtext"
+    },
+    "patidoPol": {
+      "type": "string"
+    },
+    "catVotos": {
+      "type": "integer"
+    }
+  }
+}
