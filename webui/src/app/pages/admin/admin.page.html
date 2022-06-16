@@ -1,0 +1,35 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content style="margin-left: 25px; top:10%;" id="content" >
+    <!-- BEGIN PAGE HEADER-->
+    <ion-text *ngIf="user==='votante'" style="margin-left: 50px;">
+      <h3 class="page-title"> 
+        <small>Lista de</small>
+        votantes
+      </h3>
+  </ion-text>
+    <ion-text  *ngIf="user==='candidato'" style="margin-left: 50px;">
+        <h3 class="page-title"> 
+          <small>Lista de</small>
+          Candidatos
+        </h3>
+    </ion-text>
+    <section class="content">
+      <section class="section-buttons">
+        <ion-button class="button"[routerLink]="['add',user]">Añadir Candidato<ion-icon name="add-outline"></ion-icon></ion-button>
+        <ion-button class="button"(click)="openEditForm(this.user)" >Eidtar<ion-icon name="create-outline"></ion-icon></ion-button>
+        <ion-button class="button"(click)="deleteData(this.user)">Borrar<ion-icon name="trash-outline"></ion-icon></ion-button>
+      </section>
+    </section>
+    
+    <!-- END PAGE HEADER-->
+    <div class="table">
+      <app-data-table [listRows]="list" [columns]="columns" (itemSelect)="getDataSelected($event)" ></app-data-table>
+    </div>
+    <div>
+     
+    </div>
+    
+</ion-content>
