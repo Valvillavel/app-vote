@@ -5,5 +5,38 @@
 </ion-header>
 
 <ion-content>
+  <ion-list inset="true">
+    <ion-list-header>Estado</ion-list-header>
+    <ion-accordion-group>
+      <ion-accordion value="colors">
+        <ion-item slot="header">
+          <ion-label>Propuesta</ion-label>
+        </ion-item>
+
+        <ion-list slot="content">
+          <ion-item>
+            <ion-label>subir propuesta</ion-label>
+            <ion-button>subir propuesta</ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-label>Ver estado de propuesta</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-accordion>
+      <ion-accordion value="shapes">
+        <ion-item slot="header">
+          <ion-label>Votos</ion-label>
+        </ion-item>
+
+        <ion-list slot="content">
+          <ion-item>
+            <ion-label>Cantidad de votos</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-accordion>
+      
+    </ion-accordion-group>
+  </ion-list>
+
 
 </ion-content>

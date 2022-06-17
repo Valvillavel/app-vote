@@ -1,9 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>votante</ion-title>
-  </ion-toolbar>
+
 </ion-header>
 
-<ion-content>
-
+<ion-content style="margin-left: 25px; top:10%;" id="content" >
+    <!-- BEGIN PAGE HEADER-->
+    <ion-text style="margin-left: 50px;">
+        <h3 class="page-title"> 
+          <small>Lista de</small>
+          Candidatos
+        </h3>
+    </ion-text>
+    
+    <!-- END PAGE HEADER-->
+    <div class="table">
+      <app-table-voto [listRows]="list" [columns]="columns"></app-table-voto>
+    </div>
+    
 </ion-content>

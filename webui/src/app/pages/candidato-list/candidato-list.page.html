@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>candidato-list</ion-title>
-  </ion-toolbar>
+
 </ion-header>
 
-<ion-content>
-
+<ion-content style="margin-left: 25px; top:10%;" id="content" >
+    <!-- BEGIN PAGE HEADER-->
+    <ion-text style="margin-left: 50px;">
+        <h3 class="page-title"> 
+          <small>Lista de</small>
+          Candidatos
+        </h3>
+    </ion-text>
+    <section class="content">
+      <section class="name">
+        <ion-icon name="settings-outline"></ion-icon>
+        <ion-label class="title-section"></ion-label>
+      </section>
+      <section class="section-buttons">
+        <ion-button class="button"[routerLink]="['add',user]">Aniadir Candidato<ion-icon name="add-outline"></ion-icon></ion-button>
+        <ion-button class="button"(click)="openEditForm()" >Eidtar<ion-icon name="create-outline"></ion-icon></ion-button>
+        <ion-button class="button"(click)="deleteData()">Borrar<ion-icon name="trash-outline"></ion-icon></ion-button>
+      </section>
+    </section>
+    
+    <!-- END PAGE HEADER-->
+    <div class="table">
+      <app-data-table [listRows]="list" [columns]="columns" (itemSelect)="getEntitySelected($event)" ></app-data-table>
+    </div>
+    
 </ion-content>

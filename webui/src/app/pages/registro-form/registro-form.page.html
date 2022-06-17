@@ -1,9 +1,65 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>registro-form</ion-title>
+    <ion-title>registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="margin-left: 25px; top:10%;">
+  
+  <!-- BEGIN PAGE HEADER-->
+  
+  <section *ngIf="user==='votante'" class="name">
+    <ion-icon name="settings-outline"></ion-icon>
+    <ion-label *ngIf="!editing" class="title-section">Nuevo Votante</ion-label>
+    <ion-label *ngIf="editing" class="title-section">Editar Votante</ion-label>
+  </section>
+  <section *ngIf="user==='candidato'" class="name">
+    <ion-icon name="settings-outline"></ion-icon>
+    <ion-label *ngIf="!editing" class="title-section">Nuevo Candidato</ion-label>
+    <ion-label *ngIf="editing" class="title-section">Editar Candidato</ion-label>
+  </section>
 
-</ion-content>
+<ion-list  class="ion-form" [formGroup]="registerForm" #formDirective="ngForm" 
+(ngSubmit)="editing? editRegistro(registerForm.value,formDirective) : saveRegistro(registerForm.value,formDirective)">
+  <ion-item>
+    <ion-label position="stacked"><ion-icon name="globe-outline"></ion-icon>Nombre</ion-label>
+    <ion-input placeholder="" autocapitalize inputmode="text" formControlName="nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked"><ion-icon name="globe-outline"></ion-icon>Apellidos</ion-label>
+    <ion-input placeholder="" autocapitalize inputmode="text" formControlName="apellidos"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="user==='votante'">
+    <ion-label position="stacked"><ion-icon name="globe-outline"></ion-icon>Documento de identidad</ion-label>
+    <ion-input placeholder="" autocapitalize inputmode="text" formControlName="ci"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked"><ion-icon name="globe-outline"></ion-icon>Email</ion-label>
+    <ion-input placeholder="" autocapitalize inputmode="text" formControlName="email"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="user==='votante'">
+    <ion-label position="stacked"><ion-icon name="globe-outline"></ion-icon>Direccion</ion-label>
+    <ion-input placeholder="" autocapitalize inputmode="text" formControlName="domicilio"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="user==='votante'">
+    <ion-label position="stacked"><ion-icon name="globe-outline"></ion-icon>Fecha de nacimiento</ion-label>
+    <ion-input placeholder="" autocapitalize inputmode="text" formControlName="fechaNac"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="user==='candidato'">
+    <ion-label position="stacked"><ion-icon name="globe-outline"></ion-icon>Partido Politico</ion-label>
+    <ion-input placeholder="" autocapitalize inputmode="text" formControlName="partidoPolitico"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="user==='candidato'">
+    <ion-label position="stacked"><ion-icon name="globe-outline"></ion-icon>Propuesta</ion-label>
+    <ion-input placeholder="" autocapitalize inputmode="text" formControlName="propuesta"></ion-input>
+  </ion-item>
+
+  <section class="section-buttons">
+    <ion-button *ngIf="!editing" class="button" type="submit"[disabled]="registerForm.invalid" (click)="saveRegister(registerForm.value,formDirective)">Guardar </ion-button>
+    <ion-button *ngIf="editing" class="button" type="submit"[disabled]="registerForm.invalid" (click)="editRegister(registerForm.value,formDirective)">Actualizar </ion-button>
+    <ion-button *ngIf="user==='votante'" color="light"[routerLink]="['/votante-list']">Cancelar</ion-button>
+    <ion-button *ngIf="user==='candidato'" color="light"[routerLink]="['/candidato-list']">Cancelar</ion-button>
+  </section>
+</ion-list>
+
+</ion-content>   
