@@ -26,6 +26,7 @@ export class RegistroFormPage implements OnInit {
     ci:["",],
     fechaNac:["",],
     email:["",],
+    direccion:[""],
     domicilio:["",],
     voto:["",],
     password:["",],
