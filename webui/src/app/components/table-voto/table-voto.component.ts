@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
+import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-table-voto',
@@ -9,23 +10,41 @@ import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 export class TableVotoComponent implements OnInit {
   @Input() columns:any;
   @Input() listRows:any;
+  @Output() itemSelect=new EventEmitter<any>();
   @ViewChild('tables') table:any;
   rows = [];
+  selected = [];
+  items:any;
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
   expanded: any = {};
   timeout: any;
   error=false;
 
-  constructor() { }
+  constructor(
+    public service:DataServiceService,
+  ) {  }
 
   ngOnInit() {
-    this.rows=this.listRows
-    console.log(this.listRows)
-    console.log(this.columns);
+    this.loadData()
+  }
+  loadData(){
+    this.service.getCandidatos()
+    .subscribe(candidatos=>{
+      this.rows=candidatos;
+      this.error=false;
+    },()=>{
+      this.error=true;
+      this.rows=[];
+    }) 
   }
   displayCheck(row) {
     return row.name !== 'Ethel Price';
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    this.listRows= changes.listRows.currentValue;
+    this.rows=this.listRows
+    this.selected=[]
   }
   onPage(event) {
     clearTimeout(this.timeout);

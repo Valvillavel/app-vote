@@ -1,36 +1,3 @@
 <ion-app>
-
-  <ion-menu side="start" content-id="main-content">
-    <ion-header>
-      <ion-toolbar translucent>
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="menu-content">
-      <ion-list>
-        <ion-item [routerLink]="['/admin','votante']">
-          <ion-label>Votantes</ion-label>
-        </ion-item>
-        <ion-item [routerLink]="['/admin','candidato']">
-          <ion-label>Candidatos</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-
-  <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false" (click)="openMenu()"></ion-menu-button>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button>
-        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
-    <ion-title>Sistema de votacion</ion-title>
-  </ion-toolbar>
-</ion-header>
   <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

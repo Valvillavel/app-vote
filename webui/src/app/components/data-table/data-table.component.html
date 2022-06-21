@@ -5,40 +5,74 @@
       <ion-input placeholder="Type to filter the name column..." (keyup)="updateFilter($event)" ></ion-input>
     </ion-item>
   </div>
-  
 
   
   <div style="float:left;width:95%">
     
    <ngx-datatable
-      style="width: 95%"
-      class="bootstrap"
-      [rows]="rows"
-      [columnMode]="ColumnMode.force"
-      [headerHeight]="'auto'"
-      [footerHeight]="'auto'"
-      [rowHeight]="'auto'"
-      [limit]="5"
-      [selected]="selected"
-      [selectionType]="SelectionType.checkbox"
-      [selectAllRowsOnPage]="false"
-      [displayCheck]="displayCheck"
-        [scrollbarH]="true"
-      (activate)="onActivate($event)"
-      (select)="onSelect($event)"
-    >
-      <ngx-datatable-column
-      style="margin: 5px;"
-        [width]="30"
-        [sortable]="false"
-        [canAutoResize]="false"
-        [draggable]="true"
-        [resizeable]="false"
-        [headerCheckboxable]="true"
-        [checkboxable]="true"
-      >
+   style="width: 95%"
+   class="bootstrap"
+   [rows]="rows"
+   [columnMode]="ColumnMode.force"
+   [headerHeight]="'auto'"
+   [footerHeight]="'auto'"
+   [rowHeight]="'auto'"
+   [limit]="5"
+   [selected]="selected"
+   [selectionType]="SelectionType.checkbox"
+   [selectAllRowsOnPage]="false"
+   [displayCheck]="displayCheck"
+     [scrollbarH]="true"
+   (activate)="onActivate($event)"
+   (select)="onSelect($event)"
+ >
+   <ngx-datatable-column
+   style="margin: 5px;"
+     [width]="30"
+     [sortable]="false"
+     [canAutoResize]="false"
+     [draggable]="true"
+     [resizeable]="false"
+     [headerCheckboxable]="true"
+     [checkboxable]="true"
+   >
+   </ngx-datatable-column>
+      <ngx-datatable-column name="Nombre">
+        <ng-template let-column="column" ngx-datatable-header-template>Nombre</ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <strong>{{ value }}</strong>
+        </ng-template>
       </ngx-datatable-column>
-      <ngx-datatable-column *ngFor="let column of columns" [name]='column' ></ngx-datatable-column>
+      <ngx-datatable-column name="Apellido">
+        <ng-template let-column="column" ngx-datatable-header-template>Apellidos</ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <strong>{{ value }}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="FechaNac">
+        <ng-template let-column="column" ngx-datatable-header-template>Fecha de nacimiento</ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <strong>{{ value }}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Ci">
+        <ng-template let-column="column" ngx-datatable-header-template>N° de Carnet </ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <strong>{{ value }}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Domicilio">
+        <ng-template let-column="column" ngx-datatable-header-template>Direccion </ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <strong>{{ value }}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Email">
+        <ng-template let-column="column" ngx-datatable-header-template>Email </ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <strong>{{ value }}</strong>
+        </ng-template>
+      </ngx-datatable-column>
 
     </ngx-datatable>
   </div> 

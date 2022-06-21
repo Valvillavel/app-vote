@@ -10,6 +10,8 @@ import { AdminPage } from './admin.page';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DataTableComponent } from 'src/app/components/data-table/data-table.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
+import { ToolBarComponent } from 'src/app/components/tool-bar/tool-bar.component';
+import { TableVotoComponent } from 'src/app/components/table-voto/table-voto.component';
 
 @NgModule({
   imports: [
@@ -21,7 +23,9 @@ import { DataServiceService } from 'src/app/services/data-service.service';
   ],
   declarations: [
     AdminPage,
-    DataTableComponent
+    DataTableComponent,
+    ToolBarComponent,
+    TableVotoComponent
   ],
   providers:[DataServiceService],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],

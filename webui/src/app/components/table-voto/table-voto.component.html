@@ -1,36 +1,44 @@
-<div> 
-
-  
-  <div style="float:left;width:95%">
-    <ngx-datatable
-        #mydatatable
-        class="material"
-        [headerHeight]="50"
-        [limit]="5"
-        [columnMode]="ColumnMode.force"
-        [footerHeight]="50"
-        rowHeight="auto"
-        [rows]="rows"
-      >
-    
-      <ngx-datatable-column
-      style="margin: 5px;"
-        [width]="30"
-        [sortable]="false"
-        [canAutoResize]="false"
-        [draggable]="true"
-        [resizeable]="false"
-        [headerCheckboxable]="true"
-        [checkboxable]="true"
-      >
-      </ngx-datatable-column>
-      <ngx-datatable-column *ngFor="let column of columns" [name]='column' ></ngx-datatable-column>
-      <ngx-datatable-column name="votar">
-        <ng-template let-value="value" let-row="row"  ngx-datatable-cell-template>
-          <span ><ion-button >Votar</ion-button></span>
-        </ng-template>
-      </ngx-datatable-column>
-
-    </ngx-datatable>
-  </div> 
+<div style="float:left;width:95%">
+  <ngx-datatable
+    style="width: 95%"
+    class="material"
+    [rows]="rows"
+    [columnMode]="ColumnMode.force"
+    [headerHeight]="'auto'"
+    [footerHeight]="'auto'"
+    rowHeight="auto"
+  >
+    <ngx-datatable-column name="Nombre">
+      <ng-template let-column="column" ngx-datatable-header-template>{{ column.name }} </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <strong>{{ value }}</strong>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Propuesta">
+      <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+        <span (click)="sort()">{{ column.name }}</span>
+      </ng-template>
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <i>{{ value }}</i>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="PatidoPol">
+      <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+        <span (click)="sort()">Partido politco</span>
+      </ng-template>
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <i>{{ value }}</i>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="CatVotos">
+      <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+        <span (click)="sort()">Cantidad de votos</span>
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <div style="border:solid 1px #ddd;margin:5px;padding:3px">
+          <div style="background:#999;height:10px" [style.width]="value + '%'"></div>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
 </div>

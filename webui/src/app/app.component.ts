@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { MenuController, Platform } from '@ionic/angular';
+import { DataServiceService } from './services/data-service.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +11,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class AppComponent {
   constructor(
-    private menu:MenuController
+    private menu:MenuController,
   ) {}
   openMenu(){
     this.menu.toggle();

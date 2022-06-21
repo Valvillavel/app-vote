@@ -26,9 +26,18 @@ export class DataTableComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.rows=this.listRows
-    console.log(this.listRows)
-    console.log(this.columns);
+    this.loadData()
+  }
+  loadData(){
+    this.service.getVotantes()
+    .subscribe(votantes=>{
+      this.rows=votantes;
+      console.log(this.rows)
+      this.error=false;
+    },()=>{
+      this.error=true;
+      this.rows=[];
+    }) 
   }
   ngOnChanges(changes: SimpleChanges) {
     this.listRows= changes.listRows.currentValue;

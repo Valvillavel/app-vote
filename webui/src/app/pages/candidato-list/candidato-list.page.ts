@@ -23,7 +23,7 @@ export class CandidatoListPage implements OnInit {
 
   ngOnInit() {
     this.loadData()
-    this.columns=["Nombre","Apellido","Propuesta","Partido politico","Email", "pass"];
+    this.columns=["Nombre","Propuesta","Partido politico","Email"];
   }
   loadData(){
     this.service.getCandidatos()

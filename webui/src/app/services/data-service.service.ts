@@ -12,6 +12,9 @@ export class DataServiceService {
   constructor(
     private http: HttpClient,
   ) { }
+  public getAdmins():Observable<any>{
+    return this.http.get(this.url+"users")
+  }
   public getCandidatos():Observable<any>{
     return this.http.get(this.url+'candidatoes/')
   }
@@ -35,5 +38,17 @@ export class DataServiceService {
   }
   public updateVotante(id,body):Observable<any>{
     return this.http.put(this.url + 'votantes/'+id,body)
+  }
+  public updateCantVoto(id,body):Observable<any>{
+    return this.http.put(this.url + 'candidatoes/'+id,body)
+  }
+  public updateVotanteVoto(id,body):Observable<any>{
+    return this.http.put(this.url + 'votantes/'+id,body)
+  }
+  public getCandidato(id):Observable<any>{
+    return this.http.get(this.baseUrl+"candidatoes/"+id)
+  }
+  public getVotante(id):Observable<any>{
+    return this.http.get(this.baseUrl+"votantes/"+id)
   }
 }

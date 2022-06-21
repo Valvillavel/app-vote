@@ -1,19 +1,34 @@
-<ion-header>
-
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Lista de candidatos</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content style="margin-left: 25px; top:10%;" id="content" >
-    <!-- BEGIN PAGE HEADER-->
-    <ion-text style="margin-left: 50px;">
-        <h3 class="page-title"> 
-          <small>Lista de</small>
-          Candidatos
-        </h3>
-    </ion-text>
+<ion-content fullscreen>
+  <ion-list *ngIf="dis===false">
     
-    <!-- END PAGE HEADER-->
-    <div class="table">
-      <app-table-voto [listRows]="list" [columns]="columns"></app-table-voto>
-    </div>
-    
+    <ion-list-header>
+      Candidatos
+    </ion-list-header>
+    <ion-radio-group  allow-empty-selection *ngFor="let candidato of list">
+    <ion-item >
+      <ion-avatar slot="start">
+        <img [src]="'http://localhost:1337'+candidato.avatar.url" alt="">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{candidato.nombre}} </h2>
+        <h3>{{candidato.partidoPol}}</h3>
+        <p>{{candidato.propuesta}}</p>
+      </ion-label>
+      <ion-radio (click)="selectCandidato(candidato.id)" slot="end" color="success" value="candidato.nombre" checked></ion-radio>
+    </ion-item>
+  </ion-radio-group >
+
+  </ion-list>
+
+  <ion-item *ngIf="dis===true">
+    <ion-label>
+      <h2>Ya emitiste tu voto</h2>
+    </ion-label>
+  </ion-item>
 </ion-content>

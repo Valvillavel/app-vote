@@ -1,35 +1,70 @@
 <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button color="danger" (click)="logout()">
+        Log out
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Sistema de votaciones</ion-title>
+  </ion-toolbar>
 
+  <ion-segment (ionChange)="segmentChanged($event)" color="secondary">
+    <ion-segment-button value="votantes">
+      <ion-label>Votantes</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="candidatos">
+      <ion-label>Candidatos</ion-label>
+    </ion-segment-button>  
+  </ion-segment>
 </ion-header>
 
 <ion-content style="margin-left: 25px; top:10%;" id="content" >
     <!-- BEGIN PAGE HEADER-->
-    <ion-text *ngIf="user==='votante'" style="margin-left: 50px;">
+    <div *ngIf="type==='votantes'">
+    <ion-text style="margin-left: 50px;">
       <h3 class="page-title"> 
         <small>Lista de</small>
         votantes
       </h3>
   </ion-text>
-    <ion-text  *ngIf="user==='candidato'" style="margin-left: 50px;">
-        <h3 class="page-title"> 
-          <small>Lista de</small>
-          Candidatos
-        </h3>
-    </ion-text>
     <section class="content">
       <section class="section-buttons">
-        <ion-button class="button"[routerLink]="['add',user]">Añadir Candidato<ion-icon name="add-outline"></ion-icon></ion-button>
+        <ion-button class="button"[routerLink]="['add',user]">Añadir votante<ion-icon name="add-outline"></ion-icon></ion-button>
         <ion-button class="button"(click)="openEditForm(this.user)" >Editar<ion-icon name="create-outline"></ion-icon></ion-button>
         <ion-button class="button"(click)="deleteData(this.user)">Borrar<ion-icon name="trash-outline"></ion-icon></ion-button>
       </section>
     </section>
-    
-    <!-- END PAGE HEADER-->
-    <div class="table">
-      <app-data-table [listRows]="list" [columns]="columns" (itemSelect)="getDataSelected($event)" ></app-data-table>
-    </div>
     <div>
-     
+      <br>
     </div>
+
+    <app-data-table  (itemSelect)="getEntitySelected($event)" ></app-data-table>
+  </div>
+
+<div *ngIf="type==='candidatos'">
+    <ion-text   style="margin-left: 50px;">
+      <h3 class="page-title"> 
+        <small>Lista de</small>
+        Candidatos
+      </h3>
+  </ion-text>
+  <section class="content">
+    <section class="section-buttons">
+      <ion-button class="button"[routerLink]="['add',user]">Añadir Candidato<ion-icon name="add-outline"></ion-icon></ion-button>
+      <ion-button class="button"(click)="openEditForm(this.user)" >Editar<ion-icon name="create-outline"></ion-icon></ion-button>
+      <ion-button class="button"(click)="deleteData(this.user)">Borrar<ion-icon name="trash-outline"></ion-icon></ion-button>
+    </section>
+  </section>
+  <div>
+    <br>
+  </div>
+
+  <div>
+    <app-table-voto></app-table-voto>
+  </div>
+</div>
+    
+    
+    
     
 </ion-content>
